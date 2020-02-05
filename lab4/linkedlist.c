@@ -10,6 +10,8 @@ struct node
     struct node *link;
 }*start;
 
+int count = 0;
+
 //Declarations of prototypes
 void createList (int data);
 void displayList();
@@ -20,13 +22,20 @@ void addAtPos(int data, int pos);
 int main(void)
 {
     //Variables Declarations
-    int i, n, m, ch;
+    int i, n, m, ch, pos;
     start = NULL;
 
     //Prompt for the user
     while (1)
     {
-	printf("\n1. Create list\n2. Display list\n3. Add to beginning\n4. Add to end\n5. Exit\nEnter Choiche : ");
+	printf("\n1. Create list");
+	printf("\n2. Display list");
+	printf("\n3. Add to Beginning");
+	printf("\n4. Add to End");
+	printf("\n5. Add at Position");
+	printf("\n6. Exit");
+	printf("\nEnter Choiche : ");
+
 	scanf("%d", &ch);
 
 	switch(ch)
@@ -43,6 +52,7 @@ int main(void)
 	    
 	    case 2:	printf("\nLinked List : ");
 			displayList();
+			printf("\nNumber of items : %d", count);
 			printf("\n");
 			break;
 
@@ -56,7 +66,14 @@ int main(void)
                         addEnd(m);
                         break;
 
-	    case 5:	printf("\nExiting...\n");
+       	    case 5:     printf("\nEnter the data : ");
+                        scanf("%d", &m);
+			printf("\nEnter the position after which the node is to be inserted : ");
+			scanf("%d", &pos);
+                        addAtPos(m, pos);
+                        break;
+
+	    case 6:	printf("\nExiting...\n");
 			exit(1);
 			break;
 	    
@@ -76,13 +93,17 @@ void createList (int data)
     temp -> link = NULL;
 
     if (start == NULL)
+    {
 	start = temp;
+	count++;
+    }
     else
     {
 	q = start;
 	while (q -> link != NULL)
 	    q = q -> link;
 	q -> link = temp;
+	count++;
     }
 }
 
@@ -111,6 +132,7 @@ void addBeg (int data)
     temp -> info = data;
     temp -> link = start;
     start = temp;
+    count++;
 }
 
 //Function  to add a node at the end
@@ -124,13 +146,22 @@ void addEnd (int data)
     while(q -> link != NULL)
 	q = q -> link;
     q -> link = temp;
+    count++;
 }
 
 //Function to add a node at any position
 void addAtPos (int data, int pos)
 {
-    struct node *temp, *q;
+    struct node *temp, *q, *next;
+    int i;
     temp = (struct node *)malloc (sizeof(struct node));
     temp -> info = data;
     q = start;
+    for (i = 1; i < pos; i++)
+	q = q -> link;
+    next = q -> link;
+    q -> link = temp;
+    temp -> link = next;
+    count++;
+}
 
