@@ -18,6 +18,9 @@ void displayList();
 void addBeg(int data);
 void addEnd (int data);
 void addAtPos(int data, int pos);
+void deleteBeg();
+void deleteEnd();
+void deleteAtPos(int pos);
 
 int main(void)
 {
@@ -33,7 +36,10 @@ int main(void)
 	printf("\n3. Add to Beginning");
 	printf("\n4. Add to End");
 	printf("\n5. Add at Position");
-	printf("\n6. Exit");
+	printf("\n6. Delete at Beginning");
+	printf("\n7. Delete at End");
+	printf("\n8. Delete at Position");
+	printf("\n9. Exit");
 	printf("\nEnter Choiche : ");
 
 	scanf("%d", &ch);
@@ -73,9 +79,19 @@ int main(void)
                         addAtPos(m, pos);
                         break;
 
-	    case 6:	printf("\nExiting...\n");
-			exit(1);
+	    case 6:	deleteBeg();
 			break;
+	    
+	    case 7:	deleteEnd();
+			break;
+
+	    case 8:	printf("\nEnter the position of the node is to be deleted : ");
+                        scanf("%d", &pos);
+			deleteAtPos(pos);
+			break;
+
+	    case 9:	printf("Exiting...");
+			exit(1);
 	    
 	    deafult:	printf("\nInvalid Option Try Again :( ");
 	}
@@ -165,3 +181,87 @@ void addAtPos (int data, int pos)
     count++;
 }
 
+//Function to delete a node at Beginning
+void deleteBeg()
+{
+    if (start == NULL)
+    {
+	printf("\nLinked List is empty...");
+	return;
+    }
+    else
+    {
+	struct node *temp;
+	temp = start;
+	start = temp -> link;
+	printf("\nDeleted node is: %d", temp -> info);
+	free(temp);
+	count--;
+    }
+}
+
+//Function to delete a node at End
+void deleteEnd()
+{
+    if (start == NULL)
+    {
+        printf("\nLinked List is empty...");
+        return;
+    }
+    else
+    {
+        struct node *temp, *prev;
+	int i;
+        temp = start;
+	while (temp -> link != NULL)
+	    temp = temp -> link;
+	for (i = 1; i < count - 1; i++)
+	    prev = prev -> link;
+	prev -> link = NULL;
+        printf("\nDeleted node is: %d", temp -> info);
+        free(temp);
+        count--;
+    }
+}   
+
+//Function to delete a node at a position
+void deleteAtPos(int pos)
+{
+    if (start == NULL)
+    {
+        printf("\nLinked List is empty...");
+        return;
+    }
+    else if (start -> link == NULL)
+    {
+	if (pos > 1)
+	{
+	    printf("\nLess number of nodes...");
+	    return;
+	}
+        struct node *temp;
+        temp = start;
+	start = NULL;
+        printf("\nDeleted node is: %d", temp -> info);
+        free(temp);
+        count--;
+    }
+    else
+    {
+	struct node *temp, *q;
+	int i;
+	q = start;
+	for (i = 1; i < pos - 1; i++)
+	    q = q -> link;
+	if (q == NULL)
+	{
+	    printf("\nLess number of nodes...");
+	    return;
+	}
+	temp = q -> link;
+	q -> link = temp -> link;
+	printf("\nDeleted node is: %d", temp -> info);
+        free(temp);
+        count--;
+    }
+}
