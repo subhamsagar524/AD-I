@@ -21,6 +21,7 @@ void addAtPos(int data, int pos);
 void deleteBeg();
 void deleteEnd();
 void deleteAtPos(int pos);
+void searchElement(int element);
 
 int main(void)
 {
@@ -31,15 +32,16 @@ int main(void)
     //Prompt for the user
     while (1)
     {
-	printf("\n1. Create list");
-	printf("\n2. Display list");
-	printf("\n3. Add to Beginning");
-	printf("\n4. Add to End");
-	printf("\n5. Add at Position");
-	printf("\n6. Delete at Beginning");
-	printf("\n7. Delete at End");
-	printf("\n8. Delete at Position");
-	printf("\n9. Exit");
+	printf("\n1.  Create list");
+	printf("\n2.  Display list");
+	printf("\n3.  Add to Beginning");
+	printf("\n4.  Add to End");
+	printf("\n5.  Add at Position");
+	printf("\n6.  Delete at Beginning");
+	printf("\n7.  Delete at End");
+	printf("\n8.  Delete at Position");
+	printf("\n9.  search an Element");
+	printf("\n10. Exit");
 	printf("\nEnter Choiche : ");
 
 	scanf("%d", &ch);
@@ -89,8 +91,13 @@ int main(void)
                         scanf("%d", &pos);
 			deleteAtPos(pos);
 			break;
+	    
+	    case 9:	printf("\nEnter the element you want to search : ");
+			scanf("%d", &pos);
+			searchElement(pos);
+			break;
 
-	    case 9:	printf("Exiting...");
+	    case 10:	printf("Exiting...");
 			exit(1);
 	    
 	    deafult:	printf("\nInvalid Option Try Again :( ");
