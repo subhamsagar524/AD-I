@@ -40,7 +40,7 @@ int main(void)
 	printf("\n6.  Delete at Beginning");
 	printf("\n7.  Delete at End");
 	printf("\n8.  Delete at Position");
-	printf("\n9.  search an Element");
+	printf("\n9.  Search an Element");
 	printf("\n10. Exit");
 	printf("\nEnter Choiche : ");
 
@@ -203,6 +203,8 @@ void deleteBeg()
 	start = temp -> link;
 	printf("\nDeleted node is: %d", temp -> info);
 	free(temp);
+	if (start == NULL)
+	    printf("\nLinked List is empty... Only one element deleted");
 	count--;
     }
 }
@@ -215,15 +217,23 @@ void deleteEnd()
         printf("\nLinked List is empty...");
         return;
     }
+    else if (start -> link == NULL)
+    {
+	printf("\nDeleted node is: %d", start -> info);
+	start = NULL;
+	free(start);
+	printf("Linked List is empty... Only one element deleted");
+    }
     else
     {
         struct node *temp, *prev;
 	int i;
         temp = start;
 	while (temp -> link != NULL)
+	{
+	    prev = temp;
 	    temp = temp -> link;
-	for (i = 1; i < count - 1; i++)
-	    prev = prev -> link;
+	}
 	prev -> link = NULL;
         printf("\nDeleted node is: %d", temp -> info);
         free(temp);
@@ -272,3 +282,28 @@ void deleteAtPos(int pos)
         count--;
     }
 }
+
+//Function to search an element in the Linked List
+void searchElement(int element)
+{
+    if (start == NULL)
+	printf("\nLinked list is empty...");
+    else
+    {
+        struct node *temp;
+        temp = start;
+	int count, flag;
+	count = 1;
+	flag = 0;
+	while (temp != NULL)
+	{
+	    if (temp -> info == element)
+	    {
+		printf("\nItem found at position %d", count);
+		flag = 1;
+	    }
+	    if (flag == 0)
+		printf("\nItem doesn't exists in the list...");
+	    temp = temp -> link;
+	}
+    }
