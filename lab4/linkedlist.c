@@ -42,7 +42,7 @@ int main(void)
 	printf("\n7.  Delete at End");
 	printf("\n8.  Delete at Position");
 	printf("\n9.  Search an Element");
-	printf("\n10. Reverse the List")
+	printf("\n10. Reverse the List");
 	printf("\n11. Exit");
 	printf("\nEnter Choiche : ");
 
@@ -325,6 +325,7 @@ void reverseList()
     else if (start -> link == NULL)
 	printf("\nList have only one node, so list remains the same...");
     else
+    {
     	struct node *p1, *p2, *p3;
 	p1 = start;
 	p2 = p1 -> link;
@@ -340,4 +341,5 @@ void reverseList()
 	    p2 -> link = p1;
 	}
 	start = p2;
+    }
 }
