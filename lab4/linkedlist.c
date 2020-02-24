@@ -300,10 +300,10 @@ void searchElement(int element)
 	    if (temp -> info == element)
 	    {
 		printf("\nItem found at position %d", count);
-		count++;
 		flag = 1;
 	    }
 	    temp = temp -> link;
+	    count++;
 	}
 	if (flag == 0)
 	    printf("\nItem doesn't exists in the list...");
