@@ -100,7 +100,7 @@ int main(void)
 			break;
 			
 	    case 10:	reverseList();
-			printf("\nThe list is reversed.");
+			printf("\nThe list is reversed... List : ");
 			displayList();
 			break;
 			
