@@ -32,7 +32,7 @@ int main(void)
     //Prompt for the user
     while (1)
     {
-	printf("\n1.  Create list");
+	printf("\n\n1.  Create list");
 	printf("\n2.  Display list");
 	printf("\n3.  Add to Beginning");
 	printf("\n4.  Add to End");
@@ -300,6 +300,7 @@ void searchElement(int element)
 	    if (temp -> info == element)
 	    {
 		printf("\nItem found at position %d", count);
+		count++;
 		flag = 1;
 	    }
 	    temp = temp -> link;
