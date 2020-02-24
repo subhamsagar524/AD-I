@@ -22,7 +22,7 @@ int main(void)
     printf("Enter the Roll No    : ");
     scanf("%d", &s.roll);
     printf("Enter the Name       : ");
-    scanf("%s", s.name);
+    scanf("%s", &s.name);
     printf("Enter the Age        : ");
     scanf("%d", &s.age);
     printf("Enter three  Marks   : ");
