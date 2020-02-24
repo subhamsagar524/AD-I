@@ -307,3 +307,4 @@ void searchElement(int element)
 	    temp = temp -> link;
 	}
     }
+}
