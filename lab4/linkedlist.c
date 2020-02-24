@@ -329,7 +329,7 @@ void reverseList()
     	struct node *p1, *p2, *p3;
 	p1 = start;
 	p2 = p1 -> link;
-	p3 = p3 -> link;
+	p3 = p2 -> link;
 	p1 -> link = NULL;
 	p2 -> link = p1;
 	
