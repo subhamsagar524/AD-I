@@ -22,6 +22,7 @@ void deleteBeg();
 void deleteEnd();
 void deleteAtPos(int pos);
 void searchElement(int element);
+void reverseList();
 
 int main(void)
 {
@@ -41,7 +42,8 @@ int main(void)
 	printf("\n7.  Delete at End");
 	printf("\n8.  Delete at Position");
 	printf("\n9.  Search an Element");
-	printf("\n10. Exit");
+	printf("\n10. Reverse the List")
+	printf("\n11. Exit");
 	printf("\nEnter Choiche : ");
 
 	scanf("%d", &ch);
@@ -96,8 +98,13 @@ int main(void)
 			scanf("%d", &pos);
 			searchElement(pos);
 			break;
-
-	    case 10:	printf("Exiting...");
+			
+	    case 10:	reverseList();
+			printf("\nThe list is reversed.");
+			displayList();
+			break;
+			
+	    case 11:	printf("Exiting...");
 			exit(1);
 	    
 	    deafult:	printf("\nInvalid Option Try Again :( ");
@@ -308,4 +315,29 @@ void searchElement(int element)
 	if (flag == 0)
 	    printf("\nItem doesn't exists in the list...");
     }
+}
+
+//Function to reverse the Linked List
+void reverseList()
+{
+    if (start == NULL)
+	printf("\nLinked List is empty...");
+    else if (start -> link == NULL)
+	printf("\nList have only one node, so list remains the same...");
+    else
+    	struct node *p1, *p2, *p3;
+	p1 = start;
+	p2 = p1 -> link;
+	p3 = p3 -> link;
+	p1 -> link = NULL;
+	p2 -> link = p1;
+	
+	while (p3 != NULL)
+	{
+	    p1 = p2;
+	    p2 = p3;
+	    p3 = p3 -> link;
+	    p2 -> link = p1;
+	}
+	start = p2;
 }
