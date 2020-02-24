@@ -302,9 +302,9 @@ void searchElement(int element)
 		printf("\nItem found at position %d", count);
 		flag = 1;
 	    }
-	    if (flag == 0)
-		printf("\nItem doesn't exists in the list...");
+	    temp = temp -> link;
 	}
-	temp = temp -> link;
+	if (flag == 0)
+	    printf("\nItem doesn't exists in the list...");
     }
 }
