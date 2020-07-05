@@ -3,7 +3,7 @@
 // 1841017020
 // Dt-5/7/20
 
-// PRIM's Algorithm in C.
+// PRIM's Minimum Spanning Tree Algorithm in C.
 #include<stdio.h>
 #include<stdlib.h>
  
