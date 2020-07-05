@@ -1,3 +1,6 @@
+// Subham Sagar Paira
+// subhamsagarpaira.com
+
 // This is a C program to store the prime numbers between
 // two numbers input by the user.
 
