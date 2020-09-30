@@ -50,16 +50,7 @@ int main(void)
     return 0;
 }
 
-void quicksort(int a[], int p, int r)
-{
-    int q;
-    if (p < r)
-    {
-	q = lomato_partition(a, p, r);
-	quicksort(a, p, q-1);
-	quicksort(a, q+1, r);
-    }
-}
+
 
 int lomato_partition(int a[], int p, int r)
 {
